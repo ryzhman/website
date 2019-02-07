@@ -10,6 +10,7 @@ module.exports = (router) => {
         .get(usercontroller.getUser)
 
     /**
+     * TODO remove???
      * get a user profile
      */
     router

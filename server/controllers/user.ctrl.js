@@ -8,7 +8,7 @@ module.exports = {
             if (err)
                 res.send(err)
             else if (!newUser)
-                res.send(400)
+                res.sendStatus(400)
             else
                 res.send(newUser)
             next()
@@ -20,7 +20,7 @@ module.exports = {
             if (err)
                 res.send(err)
             else if (!user)
-                res.send(404)
+                res.sendStatus(404)
             else
                 res.send(user)
             next()

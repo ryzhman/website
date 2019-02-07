@@ -37,5 +37,5 @@ module.exports = (router) => {
      */
     router
         .route('/article/:id')
-        .get(articlecontroller.getArticle)
+        .get(articlecontroller.getArticleById)
 }

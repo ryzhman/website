@@ -1,4 +1,4 @@
-/** require dependencies */
+require('dotenv').config()
 const express = require("express")
 const routes = require('./routes/')
 const mongoose = require('mongoose')
@@ -9,25 +9,25 @@ const cloudinary = require('cloudinary')
 
 const app = express()
 const router = express.Router()
-const url = process.env.MONGODB_URI || "mongodb://localhost:27017/go2it"
+const mongoDbURL = process.env.MONGODB_URI
 
 /** configure cloudinary */
 cloudinary.config({
-    cloud_name: 'chidumennamdi',
-    api_key: '',
-    api_secret: ''
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET
 })
 
 /** connect to MongoDB datastore */
 try {
-    mongoose.connect(url, {
+    mongoose.connect(mongoDbURL, {
         //useMongoClient: true
     })
 } catch (error) {
 
 }
 
-let port = 5000 || process.env.PORT
+let port = process.env.PORT || 5000
 
 /** set up routes {API Endpoints} */
 routes(router)
