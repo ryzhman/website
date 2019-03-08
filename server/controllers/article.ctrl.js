@@ -7,8 +7,8 @@ module.exports = {
     addArticle: (req, res, next) => {
         let {text, title, claps, description} = req.body;
         //let obj = { text, title, claps, description, feature_img: _feature_img != null ? `/uploads/${_filename}` : '' }
-        if (req.files.image) {
-            cloudinary.uploader.upload(req.files.image.path, (result) => {
+        if (req.body.files.image) {
+            cloudinary.uploader.upload(req.body.files.image.path, (result) => {
                 let obj = {text, title, claps, description, feature_img: result.url != null ? result.url : ''};
                 saveArticle(obj);
                 /*(new Student({...{url: result.url},...req.body})).save((err, newStudent) => {
